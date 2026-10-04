@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f7fafc;
+    color: #2d3748;
+    line-height: 1.6;
+}
+
+/* 1. Thiết lập CSS Grid Layout trên Desktop */
+.grid-layout {
+    display: grid;
+    grid-template-columns: 3fr 1fr; /* Cột Main chiếm 3 phần, Sidebar chiếm 1 phần */
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas: 
+        "header header"
+        "nav    nav"
+        "main   sidebar"
+        "footer footer";
+    min-height: 100vh;
+}
+
+/* 2. Định nghĩa từng khu vực theo grid-area */
+.header {
+    grid-area: header;
+    background-color: #1a365d;
+    color: #ffffff;
+    text-align: center;
+    padding: 24px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    font-size: 26px;
+    letter-spacing: 0.5px;
+}
+
+.nav {
+    grid-area: nav;
+    background-color: #2b6cb0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.nav ul li a {
+    display: block;
+    padding: 12px 20px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    transition: background-color 0.2s ease;
+}
+
+.nav ul li a:hover {
+    background-color: #2c5282;
+}
+
+.main-content {
+    grid-area: main;
+    background-color: #ffffff;
+    padding: 30px;
+}
+
+.main-content h2 {
+    color: #1a365d;
+    margin-bottom: 14px;
+    border-bottom: 2px solid #edf2f7;
+    padding-bottom: 8px;
+}
+
+.main-content p {
+    margin-bottom: 14px;
+    color: #4a5568;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: #edf2f7;
+    padding: 24px 20px;
+    border-left: 1px solid #e2e8f0;
+}
+
+.sidebar h3 {
+    color: #2b6cb0;
+    margin-bottom: 15px;
+    font-size: 18px;
+    border-bottom: 2px solid #cbd5e0;
+    padding-bottom: 6px;
+}
+
+.widget {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 14px;
+    margin-bottom: 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.widget h4 {
+    color: #2d3748;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.widget p {
+    font-size: 13px;
+    color: #718096;
+}
+
+.footer {
+    grid-area: footer;
+    background-color: #1a202c;
+    color: #cbd5e0;
+    text-align: center;
+    padding: 18px;
+    font-size: 14px;
+}
+
+/* 3. Responsive trên Mobile & Tablet (màn hình <= 768px) */
+@media (max-width: 768px) {
+    .grid-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto auto;
+        grid-template-areas: 
+            "header"
+            "nav"
+            "main"
+            "sidebar"
+            "footer";
+    }
+
+    .nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav ul li {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .sidebar {
+        border-left: none;
+        border-top: 1px solid #e2e8f0;
+    }
+}
